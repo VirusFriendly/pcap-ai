@@ -1,0 +1,70 @@
+# ARP
+^ARP, .{1,}$
+#
+# Cannon
+^IP [0-9\.]{9,21} > [0-9\.]{8,16}\.8612: UDP, length [0-9]{1,}$
+^IP [0-9\.]{9,21} > 224.0.0.1.8612: UDP, length [0-9]{1,}$
+#
+# Cisco Discovery Protocol, possibly a switch or a router
+^CDPv2, .{1,}$
+#
+# DHCP
+^IP [0-9\.]{7,15}\.68 > 255\.255\.255\.255\.67: BOOTP/DHCP, Request from [0-9a-f:]{17}, length .{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}\.546 > ff02::1:2.547: dhcp6 solicit$
+#
+# Alladdin HASP (EnCase)
+^IP [0-9\.]{9,21} > [0-9\.]{7,15}\.1947: UDP, length [0-9]{1,}$
+#
+# HSRP Heartbeat
+^IP [0-9\.]{8,16}1985 > 224\.0\.0\.2\.1985: HSRPv0-hello 20: state=active group=1 addr=[0-9\.]{7,15}$
+#
+# ICMPv6
+^IP6 fe80::[0-9a-f:]{1,23} > fe80::[0-9a-f:]{1,19}: ICMP6, neighbor solicitation, who has fe80::[0-9a-f:]{1,19}, length [0-9]{1,}$
+^IP6 (::|fe80::[0-9a-f:]{1,19}) > ff02::1:[0-9a-f:]{9}: ICMP6, neighbor solicitation, who has fe80::[0-9a-f:]{1,19}, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,23} > fe80::[0-9a-f:]{1,19}: ICMP6, neighbor advertisement, .{1,} is fe80::[0-9a-f:]{1,19}, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,23} > ff02::1: ICMP6, neighbor advertisement, .{1,} is fe80::[0-9a-f:]{1,19}, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,19} > ff02::2: HBH ICMP6, multicast donemax resp delay: .{1,}, length [0-9]{1,}$
+^IP6 (::|fe80::[0-9a-f:]{1,19}) > ff02::16: HBH ICMP6, multicast listener report v2, [0-9] group record\(s\), length [0-9]{1,}$
+^IP6 (::|fe80::[0-9a-f:]{1,19}) > ff02::(1|2):[0-9a-f:]{9}: HBH ICMP6, multicast listener reportmax resp delay: .{1,}, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,19} > ff02::2: ICMP6, router solicitation, length [0-9]{1,}$
+#
+# IGMP requests
+^IP [0-9\.]{7,15} > (224\.0\.(0\.1|1\.60)|239\.255\.255\.250): igmp (?:query v2.*|v2 report .{1,})$
+^IP [0-9\.]{7,15} > 224.0.0.2: igmp leave 0.0.0.0$
+#
+# LLMNR
+^IP [0-9\.]{9,21} > 224.0.0.252.5355: UDP, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:\.]{1,27} > ff02::1:3.5355: UDP, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}.5355 > fe80::[0-9a-f:\.]{1,27}: UDP, length [0-9]{1,}$
+#
+# mDNS requests
+^IP [0-9\.]{9,21} > 224.0.0.251\.5353: 0.{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}.5353 > fe80::[0-9a-f:]{1,19}.5353: 0.{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}.5353 > ff02::fb.5353: 0.{1,}$
+#
+# NetBIOS
+^IP [0-9\.]{9,23} > [0-9\.]{8,16}\.137: NBT UDP PACKET\(137\): .{1,}$
+^IP [0-9\.]{9,23} > [0-9\.]{8,16}\.138: NBT UDP PACKET\(138\)$
+#
+# Network PID Checker
+^IP [0-9\.]{9,23} > 255.255.255.255.2223: UDP, length [0-9]{1,}$
+#
+# PIM
+^IP [0-9\.]{7,15} > 224.0.0.13: PIMv2, Hello, length [0-9]{1,}$
+#
+# RIP
+^IP [0-9\.]{9,23} > [0-9\.]{7,15}\.520: RIPv(?:1|2), Request, length: [0-9]{1,}$
+#
+# RDP
+IP [0-9\.]{9,23} > 255.255.255.255.111: UDP, length [0-9]{1,}$
+#
+# Spanning Tree Protocol
+^STP 802.1d, Config, Flags \[(none|Topology change)\], bridge-id 8048.ec:44:76:8b:00:00.804[0-9], length [0-9]{1,}$
+#
+# UPnP request
+^IP [0-9\.]{9,21} > 239.255.255.250.1900: UDP, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}\.[0-9]{1,5} > ff02::c.1900: UDP, length [0-9]{1,}$
+#
+# WS-Discovery
+^IP [0-9\.]{9,21} > 239.255.255.250.3702: UDP, length [0-9]{1,}$
+^IP6 fe80::[0-9a-f:]{1,19}\.[0-9]{1,5} > ff02::c.3702: UDP, length [0-9]{1,}$
