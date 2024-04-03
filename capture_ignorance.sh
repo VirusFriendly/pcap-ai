@@ -6,9 +6,9 @@ if [ $# -lt 2 ]
   else
     if [ $# -gt 3 ]
       then
-        $pcapfile=$3
+        pcapfile=$3
       else
-        $pcapfile='ignorance.pcap'
+        pcapfile='ignorance.pcap'
     fi
 
     sudo tcpdump -i $1 -w temp.pcap -c 100000 not host $2 
